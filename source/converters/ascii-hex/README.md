@@ -26,15 +26,17 @@ So &nbsp;what &nbsp;it &nbsp;does is to split the 2 nibble and treat them as <br
 </br>
 [`THx`](#thx) &nbsp;&nbsp;= It converts 1 ASCII representing the same char in HEX.
 </br>
-`TNHx` = It converts 2 ASCII representing the same char in HEX.
+[`TNHx`](#tnhx) = It converts 2 ASCII representing the same char in HEX.
 
 </br>
 </br>
 
 # Flowcharts
-### HxNT
-![HxNT](flowchart-img/HxNT.png)
-### THx
-![THx](flowchart-img/THx.png)
 ### INTERPRETER
-![INTERPRETER](flowchart-img/INTERPRETER.png)
+![INTERPRETER](./flowchart-img/INTERPRETER.png)
+### HxNT
+![HxNT](./flowchart-img/HxNT.png)
+### THx
+![THx](./flowchart-img/THx.png)
+### TNHx
+![TNHx](./flowchart-Img/TNHx.png)
