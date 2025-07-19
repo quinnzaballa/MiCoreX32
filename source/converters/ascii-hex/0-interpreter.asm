@@ -17,47 +17,52 @@ INTERPRETER_START:
 ;; ──── PASS CHECK(1) ───────────────────┐
 PASS_CHK_1:
     pusha
-    .DGT:
-        lodsb
-        cmp al, '9'
-        ja  short .ASCII
-    ;; VALIDATE ASCII 0-9
-        cmp al, '0'
-        jb SCAN_FAIL
-        loop .DGT
-        jmp .EXIT
-    .ASCII:
-        cmp al, 'A'
-        jb short SCAN_FAIL
-        cmp al, 'F'
-        ja short SCAN_FAIL
-        loop .DGT
-    .EXIT: jmp short OPTION
+    cmp ah, byte 0x00
+    je short OPTION
+    ;; ASCII SCAN
+    SCAN_ASCII:
+        .DGT:
+            lodsb
+            cmp al, byte '9'
+            ja  short .ASCII
+        ;; VALIDATE ASCII 0-9
+            cmp al, byte '0'
+            jb SCAN_FAIL
+            loop .DGT
+            jmp .EXIT
+        .ASCII:
+            cmp al, byte 'A'
+            jb short SCAN_FAIL
+            cmp al, byte 'F'
+            ja short SCAN_FAIL
+            loop .DGT
+        .EXIT: jmp short OPTION
 ;; ════ ERRORS ═════════════════════╕
 SCAN_FAIL:
-    mov word [TEMP_DATA0], word cx
+    mov word [TEMP_DATA0], cx
     popa
-    mov word cx, word [TEMP_DATA0]
+    mov cx, word [TEMP_DATA0]
     mov ah, 0x0F
-    hlt
+    ret
 ;; ═════════════════════════════════╛
 ;; ──────────────────────────────────────┘
 ;; ──── OPTIONS ─────────────┐
 OPTION:
     popa
     ;; VALIDATION (SIMPLE)
-    cmp ah, 0x02
+    cmp ah, byte 0x02
     ja short .OPTNOTAV
     jmp near ENDOC
     ;; OPTION NOT AVAILABLE
     .OPTNOTAV:
-        mov ah, 0x0E
-        hlt
+        mov ah, byte 0x0E
+        ret
 ;; ──────────────────────────┘
 align 16
 ;; ──── TEMP_DATA ─┐
 TEMP_DATA0 dw 0
 ;; ────────────────┘
+align 16
 ;; ──── PADDING ───────────┐
 TIMES 511 - ($ - $$) nop
 hlt
