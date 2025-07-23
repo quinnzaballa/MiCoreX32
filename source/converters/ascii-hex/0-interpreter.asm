@@ -8,22 +8,23 @@
 ;; DATE OF CREATION (DOC) : 7/16/2025 | 11:18PM | GMT+08 | EVENT(S): My Birthday X3 (Just turned 18)
 ;; ================================================================
 
-.TEST_CODE:
-    mov cx, word 2
-    mov ax, word DATA_0
-    mov si, ax
-    mov ax, word DATA_1
-    mov di, ax
-    mov ah, byte 2
-    call near INTERPRETER_START
+; .TEST_CODE:
+;     mov cx, word 2
+;     mov ax, word DATA_0
+;     mov si, ax
+;     mov ax, word DATA_1
+;     mov di, ax
+;     mov ah, byte 2
+;     call near INTERPRETER_START
 
-hlt
-align 16
-;; DATA
-DATA_0 db 'C', '2', '4', 'A'
-align 16
-DATA_1 times 2 dw 0
-align 16
+; hlt
+; align 16
+; ;; DATA
+; DATA_0 db 'C', '2', '4', 'A'
+; align 16
+; DATA_1 times 2 dw 0
+; align 16
+
 INTERPRETER_START:
 
 ;; ──── BUILD OPTIONS ─┐
