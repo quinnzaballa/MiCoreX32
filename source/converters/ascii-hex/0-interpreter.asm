@@ -14,13 +14,13 @@
     mov si, ax
     mov ax, word DATA_1
     mov di, ax
-    mov ah, byte 1
+    mov ah, byte 2
     call near INTERPRETER_START
 
 hlt
 align 16
 ;; DATA
-DATA_0 db '0', '2'
+DATA_0 db 'C', '2', '4', 'A'
 align 16
 DATA_1 times 2 dw 0
 align 16

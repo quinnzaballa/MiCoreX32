@@ -14,29 +14,29 @@
     ;; ──── Load Data ─┐
     xor ax, ax
     lodsw
-    xchg al, ah
     ;; ────────────────┘
     ;; ──── CONVERSION ───────────────────────┐
     ;; ════ MSB|LSB-Nibble ════╕
     .MSB:
         cmp ah, byte 'A'
         jb short .MSB_DGT
-        sub ah, byte 0x31
+        sub ah, byte ('A' - 10)
         jmp short .MSB_EXIT
         .MSB_DGT:
             sub ah, byte '0'
     .MSB_EXIT:
     .LSB:
-        cmp ah, byte 'A'
+        cmp al, byte 'A'
         jb short .LSB_DGT
-        sub ah, byte 0x31
+        sub al, byte ('A' - 10)
         jmp short .LSB_EXIT
         .LSB_DGT:
-            sub ah, byte '0'
+            sub al, byte '0'
     .LSB_EXIT:     
     ;; ════════════════════════╛
     ;; ───────────────────────────────────────┘
     ;; ──── Storing Result ──┐
+    xchg al, ah
     rol ah, byte 4
     or al, ah
     stosb
