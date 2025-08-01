@@ -44,5 +44,6 @@
     loop .MOPT
     ;; Nothing to Clean.
     popa ;; Pop all and restore
+    sti
     ret
     ;; ───────────────────┘  

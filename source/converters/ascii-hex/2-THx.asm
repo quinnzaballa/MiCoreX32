@@ -28,5 +28,6 @@
         stosb
         loop .ASCII
         popa
+        sti
         ret
     ;; ───────────────────────┘

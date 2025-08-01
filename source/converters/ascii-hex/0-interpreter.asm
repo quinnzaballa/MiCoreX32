@@ -33,6 +33,7 @@ INTERPRETER_START:
 ;; ────────────────────┘
 ;; ──── PASS CHECK(1) ───────────────────┐
 .PASS_CHK_1:
+    cli
     pusha
     test cx, cx
     jz short .CINV
@@ -62,10 +63,12 @@ INTERPRETER_START:
     popa
     mov cx, word [TEMP_DATA0]
     mov ah, byte 0x0F
+    sti
     ret
 .CINV:   ;; COUNT INVALID
     popa
     mov ah, byte 0x1F
+    sti
     ret
 ;; ═════════════════════════════════╛
 ;; ──────────────────────────────────────┘
@@ -81,6 +84,7 @@ INTERPRETER_START:
     .OPTNOTAV:
         popa
         mov ah, byte 0x0E
+        sti
         ret
 ;; ──────────────────────────┘
 align 16

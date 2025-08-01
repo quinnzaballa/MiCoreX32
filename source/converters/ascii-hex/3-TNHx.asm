@@ -44,5 +44,6 @@
     ;; ──── LOOP CHECK ──┐
     loop .MOPT
     popa
+    sti
     ret
     ;; ──────────────────┘
