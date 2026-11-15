@@ -1,3 +1,5 @@
+#ABANDONED
+
 Micro CORE Structure:
 
 This is no emulated environment. 
